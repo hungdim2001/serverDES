@@ -1,0 +1,11 @@
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\bin\Debug\TripleDES File Encryption Tutorial.exe.config
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\bin\Debug\TripleDES File Encryption Tutorial.exe
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\bin\Debug\TripleDES File Encryption Tutorial.pdb
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\TripleDES_File_Encryption_Tutorial.Form1.resources
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\TripleDES_File_Encryption_Tutorial.Properties.Resources.resources
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\TripleDES File Encryption Tutorial.exe
+C:\Users\hungdz\Downloads\TripleDES File Encryption Tutorial\obj\Debug\TripleDES File Encryption Tutorial.pdb

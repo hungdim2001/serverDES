@@ -1,0 +1,8 @@
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\bin\Debug\TripleDES File Encryption Tutorial.exe
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\bin\Debug\TripleDES File Encryption Tutorial.pdb
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\obj\Debug\TripleDES File Encryption Tutorial.csprojResolveAssemblyReference.cache
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\obj\Debug\TripleDES_File_Encryption_Tutorial.Form1.resources
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\obj\Debug\TripleDES_File_Encryption_Tutorial.Properties.Resources.resources
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\obj\Debug\TripleDES File Encryption Tutorial.csproj.GenerateResource.Cache
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\obj\Debug\TripleDES File Encryption Tutorial.exe
+c:\users\bassel\documents\visual studio 2015\Projects\TripleDES File Encryption Tutorial\obj\Debug\TripleDES File Encryption Tutorial.pdb
