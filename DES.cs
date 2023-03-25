@@ -5,14 +5,14 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace TripleDES_File_Encryption_Tutorial
+namespace Server
 {
-    public class TripleDES
+    public class DES
     {
         private TripleDESCryptoServiceProvider des = new TripleDESCryptoServiceProvider();
-        public TripleDES(string key)
+        public DES(string key)
         {
-            des.Key = UTF8Encoding.UTF8.GetBytes(key);
+            des.Key = UTF8Encoding.UTF8.GetBytes(key+"12345678");
             des.Mode = CipherMode.ECB; //Electronic Code Book
             des.Padding = PaddingMode.PKCS7;
         }

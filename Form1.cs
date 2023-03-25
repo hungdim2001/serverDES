@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Server.Doi_tuong;
+using Server.Thu_Vien;
+using System.Security.Cryptography;
 
-namespace TripleDES_File_Encryption_Tutorial
+namespace Server
 {
     public partial class Form1 : Form
 
@@ -23,6 +20,14 @@ namespace TripleDES_File_Encryption_Tutorial
 		Socket client;
 		String path;
 		String fileName;
+		public static string TenTienTrinh = "";
+		public static int GiaiDoan = -1;
+		private static int Dem = 0;
+		int MaHoaHayGiaiMa = 1;
+		bool FileHayChuoi = true;
+		DES64Bit MaHoaDES64;
+		Khoa Khoa;
+	
 		public Form1()
         {
 			Connect();
@@ -113,33 +118,70 @@ namespace TripleDES_File_Encryption_Tutorial
 			}
 
 		}
+		private void MaHoa()
+		{
+			
+			MaHoaDES64 = new DES64Bit();
+
+			TenTienTrinh = "";
+
+			GiaiDoan = 0;
+			Dem = 0;
+
+			if (FileHayChuoi)
+			{
+				Khoa = new Khoa(textBox2.Text);
+				if (MaHoaHayGiaiMa == 1)
+				{
+						
+					GiaiDoan = 0;																	if(GiaiDoan== 0) { Encrypt(); return; }
+					ChuoiNhiPhan chuoi = DocFileTxt.FileReadToBinary(fileName + path);
+					GiaiDoan = 1;
+					ChuoiNhiPhan KQ = MaHoaDES64.ThucHienDES(Khoa, chuoi, 1);
+					GiaiDoan = 2;
+					DocFileTxt.WriteBinaryToFile(fileName+path, KQ);
+					GiaiDoan = 3;
+					
+				}
+				else
+				{
+					GiaiDoan = 0;																		if(GiaiDoan== 0) { Decrypt(); return; }
+					ChuoiNhiPhan chuoi = DocFileTxt.FileReadToBinary(fileName + path);
+					GiaiDoan = 1;
+					ChuoiNhiPhan KQ = MaHoaDES64.ThucHienDES(Khoa, chuoi, -1);
+					if (KQ == null)
+					{
+						MessageBox.Show("Invalid Key");
+						return;
+					}
+					GiaiDoan = 2;
+					DocFileTxt.WriteBinaryToFile(fileName + path, KQ);
+					GiaiDoan = 3;
+				}
+			}
+
 		
+		}
+
 		private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                TripleDES tDES = new TripleDES(textBox2.Text);
-                tDES.EncryptFile(textBox1.Text);
-                GC.Collect();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+		
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                TripleDES tDES = new TripleDES(textBox2.Text);
-                tDES.DecryptFile(textBox1.Text);
-                GC.Collect();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+			if (String.IsNullOrEmpty(textBox2.Text))
+			{
+				MessageBox.Show("key is not empty");
+				return;
+			}
+			if (textBox2.Text.Length != 8)
+			{
+				MessageBox.Show("key must be 8 characterst");
+				return;
+			}
+			MaHoaHayGiaiMa = 2;
+			MaHoa();
         }
 
 		private void button4_Click(object sender, EventArgs e)
@@ -154,19 +196,20 @@ namespace TripleDES_File_Encryption_Tutorial
 				MessageBox.Show("key is not empty");
 				return;
 			}
-			if (textBox2.Text.Length!=8)
+			if (textBox2.Text.Length != 8)
 			{
 				MessageBox.Show("key must be 8 characterst");
 				return;
 			}
 			try
 			{
+				MaHoaHayGiaiMa = 1;
+				MaHoa();
 				FileInfo file = new FileInfo(path + fileName);
 				byte[] data = new byte[1024];
-				byte[] fsize = new byte[file.Length]; // tạo mảng chứa dữ liệu
+				byte[] fsize = new byte[file.Length];
 				FileStream fs = new FileStream(path + fileName, FileMode.Open); // đọc thông tin file đã nhập
 				fs.Read(fsize, 0, fsize.Length);
-
 				fs.Close();
 				while (true)
 				{
@@ -188,6 +231,68 @@ namespace TripleDES_File_Encryption_Tutorial
 
 			}
 
+			
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void Encrypt()
+		{
+			try
+			{
+				DES tDES = new DES(textBox2.Text);
+				tDES.EncryptFile(textBox1.Text);
+				GC.Collect();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+				return;
+			}
+		}
+		public void Decrypt()
+		{
+
+			if (String.IsNullOrEmpty(textBox2.Text))
+			{
+				MessageBox.Show("key is not empty");
+				return;
+			}
+			if (textBox2.Text.Length != 8)
+			{
+				MessageBox.Show("key must be 8 characterst");
+				return;
+			}
+			try
+			{
+				DES tDES = new DES(textBox2.Text);
+				tDES.DecryptFile(textBox1.Text);
+				GC.Collect();
+				MessageBox.Show("Decrypt successfully");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 			
 		}
 

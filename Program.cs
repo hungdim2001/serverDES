@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace TripleDES_File_Encryption_Tutorial
+namespace Server
 {
     static class Program
     {
